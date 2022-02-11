@@ -1,4 +1,5 @@
 {% load static %}
+{% load cache %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -87,24 +88,26 @@
                     </div>
                 {% endfor %}
             {% endif %}
-        {% for course in courses %}
-            <div class="col-md-12">
-                <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                    <div class="col p-4 d-flex flex-column position-static">
-                        <strong class="d-inline-block mb-2 text-primary">{{ course.subject }}</strong>
-                        <a href="{% url 'courses:course-detail' course.id %}" class="text-dark">
-                            <h3 class="mb-0">{{ course.title }}</h3></a>
-                        <div class="mb-1 text-muted">{{ course.created|date }} <span>by:</span>
-                            <b><i>{{ course.owner.fullname }}</i></b></div>
-                        <p class="card-text">{{ course.overview }}</p>
-                    </div>
-                    <div class="col-auto d-none d-lg-block">
-                        <img src="{{ course.course_image.url }}" alt="" class="bd-placeholder-img"
-                             style="max-width: 350px; min-width: 350px" height="250">
+        {% cache MID_TTL 'courses' request.GET.page %}
+            {% for course in courses %}
+                <div class="col-md-12">
+                    <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                        <div class="col p-4 d-flex flex-column position-static">
+                            <strong class="d-inline-block mb-2 text-primary">{{ course.subject }}</strong>
+                            <a href="{% url 'courses:course-detail' course.id %}" class="text-dark">
+                                <h3 class="mb-0">{{ course.title }}</h3></a>
+                            <div class="mb-1 text-muted">{{ course.created|date }} <span>by:</span>
+                                <b><i>{{ course.owner.fullname }}</i></b></div>
+                            <p class="card-text">{{ course.overview }}</p>
+                        </div>
+                        <div class="col-auto d-none d-lg-block">
+                            <img src="{{ course.course_image.url }}" alt="" class="bd-placeholder-img"
+                                style="max-width: 350px; min-width: 350px" height="250">
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        {% endcache %}
         </div>
         {% endblock %}
     </div>

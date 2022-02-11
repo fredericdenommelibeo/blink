@@ -26,12 +26,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
+    'template_profiler_panel',
 
     'users.apps.UsersConfig',
     'courses.apps.CoursesConfig',
     'crispy_forms',
     'embed_video',
 ]
+
+MID_TTL = 10 * 60
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -47,7 +50,7 @@ MIDDLEWARE = [
 ]
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
-CACHE_MIDDLEWARE_SECONDS = 600
+CACHE_MIDDLEWARE_SECONDS = 10
 
 INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost',)
 
@@ -64,6 +67,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
+    'template_profiler_panel.panels.template.TemplateProfilerPanel',
 ]
 ROOT_URLCONF = 'Blink.urls'
 
