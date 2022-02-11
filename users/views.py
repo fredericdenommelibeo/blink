@@ -2,9 +2,10 @@ import json
 from django.contrib.auth.models import Permission
 from django.contrib.auth import login, authenticate, logout
 from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.models import Group
+from django.core.cache import cache
 from django.shortcuts import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import Group
 from django.urls import reverse_lazy
 from courses.models import Course, Subject
 from .forms import *
@@ -13,7 +14,11 @@ from .forms import *
 def home(request):
     # courses = Course.objects.all()
     courses = Course.objects.prefetch_related("owner").all()
-    subjects = Subject.objects.all()
+    # subjects = Subject.objects.all()
+    subjects = cache.get('all_subjects')
+    if not subjects:
+        subjects = Subject.objects.all()
+        cache.set('all_subjects', subjects)
     context = {'courses': courses, 'subjects': subjects}
     return render(request, 'base.html', context)
 

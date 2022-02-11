@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.decorators.cache import cache_page
 from .views import CreateCourse, CourseDetailView, CourseUpdateView,\
     CourseDeleteView, CourseModuleUpdateView, ContentCreateUpdateView, student_enrollment, \
     StudentCourseDetailView, course_by_subject
