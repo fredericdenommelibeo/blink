@@ -13,7 +13,7 @@ SECRET_KEY = '=8(v$qv^07suutcj8g0csc$72szgbn+9u5+@89ip@hblh-lcoh'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '134.122.44.129']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '134.122.44.129', 'deuxsec.com']
 
 
 # Application definition
