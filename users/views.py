@@ -11,8 +11,8 @@ from .forms import *
 
 
 def home(request):
-    courses = Course.objects.all()
-    # courses = Course.objects.prefetch_related("owner").all()
+    # courses = Course.objects.all()
+    courses = Course.objects.prefetch_related("owner").all()
     subjects = Subject.objects.all()
     context = {'courses': courses, 'subjects': subjects}
     return render(request, 'base.html', context)
