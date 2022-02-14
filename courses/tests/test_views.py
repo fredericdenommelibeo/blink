@@ -1,8 +1,15 @@
-from django.test import Client
+from django.contrib.auth.models import Group
+from django.test import Client, TestCase
+from django.urls import reverse
+from django.utils import timezone
 
-c = Client()  # enforce_csrf_checks=True
+from courses.models import Subject
 
-response = c.post('/login/',
-                    {'email': 'john@example.com',
-                    'password': 'doe'})
-response = c.get('/home')
+
+class TestViews(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_home_page(self):
+        response = self.client.get('http://127.0.0.1:8000')
+        self.assertEqual(response.status_code, 200)
