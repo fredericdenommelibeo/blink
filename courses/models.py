@@ -1,12 +1,13 @@
 import os
 
-from django.db import models
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
 from django.template.loader import render_to_string
+from slugify import slugify
+from users.models import Account
 
 from .fields import OrderField
-from users.models import Account
 
 
 class Subject(models.Model):
