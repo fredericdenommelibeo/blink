@@ -8,7 +8,9 @@ app_name = 'courses'
 
 urlpatterns = [
     path('create', CreateCourse.as_view(), name='create-course'),
+    # path('<slug:slug>/', CourseDetailView.as_view(), name='course-detail'),
     path('<int:pk>/', CourseDetailView.as_view(), name='course-detail'),
+    # path('<int:pk>/', (cache_page(60 * 10))(CourseDetailView.as_view()), name='course-detail'),
     path('edit/<slug:slug>/', CourseUpdateView.as_view(), name='course-edit'),
     path('delete/<slug:slug>/', CourseDeleteView.as_view(), name='course-delete'),
     path('<pk>/module/', CourseModuleUpdateView.as_view(), name='course-modules-update'),

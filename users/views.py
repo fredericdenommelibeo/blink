@@ -13,8 +13,8 @@ from .forms import *
 
 
 def home(request):
-    courses = Course.objects.all()
-    # courses = Course.objects.prefetch_related("owner").all()
+    # courses = Course.objects.all()
+    courses = Course.objects.prefetch_related("owner").all()
     subjects = Subject.objects.all()
     # subjects = cache.get('all_subjects')
     # if not subjects:

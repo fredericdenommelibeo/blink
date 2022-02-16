@@ -30,6 +30,7 @@ class CreateCourse(LoginRequiredMixin, PermissionRequiredMixin,
         return super().form_valid(form)
 
 
+# @method_decorator(cache_page(60 * 10), name='get')
 class CourseDetailView(DetailView):
     model = Course
     template_name = 'courses/course_page.html'
