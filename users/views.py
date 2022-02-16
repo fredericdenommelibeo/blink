@@ -13,15 +13,16 @@ from .forms import *
 
 
 def home(request):
-    # courses = Course.objects.all()
-    courses = Course.objects.prefetch_related("owner").all()
-    # subjects = Subject.objects.all()
-    subjects = cache.get('all_subjects')
-    if not subjects:
-        subjects = Subject.objects.all()
-        cache.set('all_subjects', subjects)
-    MID_TTL = settings.MID_TTL
-    context = {'courses': courses, 'subjects': subjects, 'MID_TTL': MID_TTL}
+    courses = Course.objects.all()
+    # courses = Course.objects.prefetch_related("owner").all()
+    subjects = Subject.objects.all()
+    # subjects = cache.get('all_subjects')
+    # if not subjects:
+    #     subjects = Subject.objects.all()
+    #     cache.set('all_subjects', subjects)
+    context = {'courses': courses, 'subjects': subjects}
+    # MID_TTL = settings.MID_TTL
+    # context = {'courses': courses, 'subjects': subjects, 'MID_TTL': MID_TTL}
     return render(request, 'base.html', context)
 
 

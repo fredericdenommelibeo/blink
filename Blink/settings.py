@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'debug_toolbar',
-    'template_profiler_panel',
+    # 'template_profiler_panel',
 
     'users.apps.UsersConfig',
     'courses.apps.CoursesConfig',
@@ -34,23 +34,23 @@ INSTALLED_APPS = [
     'embed_video',
 ]
 
-MID_TTL = 10 * 60
+# MID_TTL = 10 * 60
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.cache.UpdateCacheMiddleware',
+    # 'django.middleware.cache.UpdateCacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.cache.FetchFromCacheMiddleware',
+    # 'django.middleware.cache.FetchFromCacheMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
-CACHE_MIDDLEWARE_ALIAS = 'default'
-CACHE_MIDDLEWARE_SECONDS = 10
+# CACHE_MIDDLEWARE_ALIAS = 'default'
+# CACHE_MIDDLEWARE_SECONDS = 10
 
 INTERNAL_IPS = ('127.0.0.1', '0.0.0.0', 'localhost',)
 
@@ -67,7 +67,7 @@ DEBUG_TOOLBAR_PANELS = [
     'debug_toolbar.panels.signals.SignalsPanel',
     'debug_toolbar.panels.logging.LoggingPanel',
     'debug_toolbar.panels.redirects.RedirectsPanel',
-    'template_profiler_panel.panels.template.TemplateProfilerPanel',
+    # 'template_profiler_panel.panels.template.TemplateProfilerPanel',
 ]
 ROOT_URLCONF = 'Blink.urls'
 
