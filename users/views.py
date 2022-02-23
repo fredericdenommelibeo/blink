@@ -20,9 +20,9 @@ def home(request):
     if not subjects:
         subjects = Subject.objects.all()
         cache.set('all_subjects', subjects)
-    context = {'courses': courses, 'subjects': subjects}
-    # MID_TTL = settings.MID_TTL
-    # context = {'courses': courses, 'subjects': subjects, 'MID_TTL': MID_TTL}
+    # context = {'courses': courses, 'subjects': subjects}
+    MID_TTL = settings.MID_TTL
+    context = {'courses': courses, 'subjects': subjects, 'MID_TTL': MID_TTL}
     return render(request, 'base.html', context)
 
 

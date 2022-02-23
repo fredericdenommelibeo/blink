@@ -1,5 +1,5 @@
 {% load static %}
-{% comment %} {% load cache %} {% endcomment %}
+{% load cache %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -88,7 +88,7 @@
                     </div>
                 {% endfor %}
             {% endif %}
-        {% comment %} {% cache MID_TTL 'courses' request.GET.page %} {% endcomment %}
+        {% cache MID_TTL 'courses' request.GET.page %}
             {% for course in courses %}
                 <div class="col-md-12">
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
@@ -108,7 +108,7 @@
                     </div>
                 </div>
             {% endfor %}
-        {% comment %} {% endcache %} {% endcomment %}
+        {% endcache %}
         </div>
         {% endblock %}
     </div>
